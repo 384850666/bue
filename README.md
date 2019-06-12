@@ -1,5 +1,4 @@
-# web-app
-
+# BUE-PC(基于elment-ul二次封装)
 ## Project setup
 ```
 npm install
