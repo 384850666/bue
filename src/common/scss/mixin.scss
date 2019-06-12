@@ -1,0 +1,9 @@
+$blue: #409EFF;
+$green: #67C23A;
+$orange: #E6A23C;
+$red: #F56C6C;
+$gray: #909399;
+
+@mixin myBorder($color:#F56C6C) {
+  border: solid 1px $color;
+}
