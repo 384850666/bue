@@ -59,48 +59,6 @@
                     </el-button>
                 </template>
             </bue-table>
-            <!--<el-table ref="tableModule" :data="rows"
-                      tooltip-effect="dark" stripe @selection-change="selectChange" height="100%">
-                <el-table-column type="selection" width="55" v-if="multiple"></el-table-column>
-                <el-table-column label="序号" width="50" v-if="rowNum">
-                    <template slot-scope="scope">{{(pagination.pageIndex-1)*pagination.pageSize+scope.$index+1}}
-                    </template>
-                </el-table-column>
-
-                <el-table-column v-for="(column,index) in columns" :key="index" :label="column.label"
-                                 :width="column.width" :show-overflow-tooltip="column.nowrap">
-                    <template slot-scope="scope">
-                        <slot :name="column.data" :row="scope.row"
-                              :format="dataFormat(scope.row, column.data, bindings, column.dtype, column.format)">
-                            <template v-if="column.dtype === 'image'">
-                                <div class="bue-preview" v-if="scope.row.pics.length">
-                                    <span class="load">Image</span>
-                                    <img :src="scope.row.pics[0].url"
-                                         alt="" width="50" height="50">
-                                    <div class="preview-box" title="点击查看大图"
-                                         @click="previewPic(scope.row.pics)">
-                                        <i class="el-icon-search"></i>
-                                    </div>
-                                </div>
-                            </template>
-                            <template v-else>
-                                {{dataFormat(scope.row, column.data, bindings, column.dtype, column.format)}}
-                            </template>
-                        </slot>
-                    </template>
-                </el-table-column>
-
-                <el-table-column label="管理" width="150" v-if="columnHandel.length">
-                    <template slot-scope="scope">
-                        <el-button size="mini" @click="Update(scope.row)"
-                                   v-if="checkHandle(columnHandel, 'update')">编辑
-                        </el-button>
-                        <el-button size="mini" type="danger" @click="Delete(scope.row)"
-                                   v-if="checkHandle(columnHandel, 'del')">删除
-                        </el-button>
-                    </template>
-                </el-table-column>
-            </el-table>-->
         </div>
         <div class="page-box" v-if="isPager">
             <el-pagination
