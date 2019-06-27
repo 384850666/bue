@@ -62,6 +62,12 @@
                             },
                             {
                                 tag: 'li',
+                                text: 'BueFileUpload',
+                                icon: 'iconfont iconzhibiaojihua',
+                                link: '/client/bue-form/bue-file-upload'
+                            },
+                            {
+                                tag: 'li',
                                 text: 'BueCode',
                                 icon: 'iconfont iconqiye-tianchong',
                                 link: '/client/bue-form/bue-code'
@@ -73,7 +79,13 @@
                                 link: '/client/bue-form/bue-rich-editor'
                             }
                         ]
-                    }
+                    },
+                    {
+                        tag: 'li',
+                        text: 'BueTree',
+                        icon: 'iconfont iconquanxiankuaizhuang',
+                        link: '/client/bue-tree'
+                    },
                     /*{
                         tag: 'li',
                         text: '待定组件4',
@@ -105,8 +117,7 @@
         left: 0;
         top: 65px;
         bottom: 0;
-        background: url(../../../assets/navbar-bg.png) #171e36 no-repeat center bottom;
-        background-size: 100%;
+        background: #1a1a1a ;
         padding-top: 40px;
         .el-scrollbar{
             position:absolute;

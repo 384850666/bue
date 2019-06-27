@@ -38,6 +38,10 @@ module.exports = {
         if (process.env.NODE_ENV === 'production') {
             // 为生产环境修改配置...
             config.mode = 'production';
+            config.externals = {
+                'vue': 'Vue',
+                'element-ui': 'ELEMENT'
+            }
         } else {
             // 为开发环境修改配置...
             config.mode = 'development';
@@ -51,6 +55,11 @@ module.exports = {
                     '@': path.resolve(__dirname, './src'),
                     '@c': path.resolve(__dirname, './src/components')
                 }
+                /*externals: {
+                    'vue': 'Vue',
+                    'element-ui': 'ELEMENT'
+                }*/
+
             }
         });
     },

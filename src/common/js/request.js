@@ -4,7 +4,7 @@ import clientStore from '@/store/client/clientStore'
 import manageStore from '@/store/manage/manageStore'
 // import { getToken } from '@/utils/auth'
 
-const store = window.APP_ENTRY === 'client' ? clientStore : manageStore
+const store = window.APP_ENTRY === 'client' ? clientStore : manageStore;
 
 // 创建axios实例
 const service = axios.create({

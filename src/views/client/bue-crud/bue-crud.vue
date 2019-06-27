@@ -41,50 +41,44 @@
                     <el-row :gutter="20">
 
                         <el-col :span="12">
-                            <el-form-item label="标题" prop="title" label-width="120px"
-                                          :rules="{required: true, message: '请输入标题'}">
+                            <bue-form-item label="标题" prop="title" required>
                                 <el-input v-model="model.title" placeholder="请输入标题"></el-input>
-                            </el-form-item>
+                            </bue-form-item>
                         </el-col>
 
                         <el-col :span="12">
-                            <el-form-item label="记录人" prop="recorder" label-width="120px"
-                                          :rules="{required: true, message: '请输入记录人'}">
+                            <bue-form-item label="记录人" prop="recorder" required>
                                 <el-input v-model="model.recorder" placeholder="请输入记录人"></el-input>
-                            </el-form-item>
+                            </bue-form-item>
                         </el-col>
 
                         <el-col :span="12">
-                            <el-form-item label="日志类型" prop="detail.type" label-width="120px"
-                                          :rules="{required: true, message: '请选择日志类型', trigger: ['blur', 'change']}">
-                                <el-select v-model="model.detail.type" placeholder="请选择日志类型">
-                                    <el-option label="安全日志" :value="0"></el-option>
-                                    <el-option label="登录日志" :value="1"></el-option>
-                                    <el-option label="登出日志" :value="2"></el-option>
-                                </el-select>
-                            </el-form-item>
+                            <bue-form-item label="日志类型" required>
+                                <bue-select v-model="model.detail.type" placeholder="请选择日志类型"
+                                            :data="bindings.LogType"></bue-select>
+                            </bue-form-item>
                         </el-col>
 
                         <el-col :span="12">
-                            <el-form-item label="启用" prop="status" label-width="120px">
+                            <bue-form-item label="启用" prop="status">
                                 <el-switch v-model="model.status" :active-value="1" :inactive-value="0"></el-switch>
-                            </el-form-item>
+                            </bue-form-item>
                         </el-col>
 
                         <el-col :span="24">
-                            <el-form-item label="内容" prop="content" label-width="120px"
-                                          :rules="{required: true, message: '请输入内容'}">
-                                <el-input type="textarea" rows="5" v-model="model.content" placeholder="请输入内容"></el-input>
-                            </el-form-item>
+                            <bue-form-item label="内容" prop="content" required>
+                                <el-input type="textarea" rows="5" v-model="model.content"
+                                          placeholder="请输入内容"></el-input>
+                            </bue-form-item>
                         </el-col>
 
                         <el-col :span="24">
-                            <el-form-item label="图片" prop="pics" label-width="120px"
-                                          :rules="{required: true, message: '至少上传1张图片', trigger: 'change'}"
-                                          ref="picsFormItem">
+                            <bue-form-item label="图片" prop="pics"
+                                           :rules="[{required: true, message: '至少上传1张图片', trigger: 'change'}]"
+                                           ref="picsFormItem">
                                 <bue-img-upload v-model="model.pics" multiple :limit="9"
                                                 @change="picsChange"></bue-img-upload>
-                            </el-form-item>
+                            </bue-form-item>
                         </el-col>
 
                     </el-row>
@@ -98,7 +92,9 @@
 <script type="text/ecmascript-6">
     import BueFixedContainer from '@/components/BueFixedContainer/BueFixedContainer'
     import BueCrud from '@/components/BueCrud/BueCrud'
+    import BueFormItem from '@/components/BueForm/BueFormItem'
     import BueImgUpload from '@/components/BueImgUpload/BueImgUpload'
+    import BueSelect from '@/components/BueSelect/BueSelect'
     import {getLog, createLog, updateLog, deleteLog, checkStatus} from '@/api/log'
 
     const crudApi = {
@@ -133,7 +129,9 @@
         components: {
             BueFixedContainer,
             BueCrud,
-            BueImgUpload
+            BueFormItem,
+            BueImgUpload,
+            BueSelect
         },
         data() {
             return {
@@ -225,7 +223,7 @@
             },
             picsChange(pics) {
                 if (pics.length) {
-                    this.$refs.picsFormItem.clearValidate();
+                    this.$refs.picsFormItem.ClearValidate();
                 }
             }
         }

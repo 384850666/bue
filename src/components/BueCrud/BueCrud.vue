@@ -73,14 +73,13 @@
             </el-pagination>
         </div>
         <el-dialog ref="bueCrudDialog" :title="dialog.isNew ? '新增':'修改'" :visible.sync="dialog.visible"
-                   custom-class="bue-crud-dialog" :close-on-click-modal="false" append-to-body @closed="ClosedHandle"
-                   @open="dialog.closed = false">
+                   custom-class="bue-crud-dialog" :close-on-click-modal="false" append-to-body
+                   @open="dialog.closed = false" @closed="dialog.closed = true">
 
-            <el-form v-if="!dialog.closed" ref="bueCrudForm" :model="formModel" :label-width="formLabelWidth"
-                     :rules="rules">
+            <bue-form v-if="!dialog.closed" ref="bueCrudForm" v-model="formModel" :label-width="formLabelWidth">
                 <slot name="crudForm" :model="formModel" :is-new="dialog.isNew">
                 </slot>
-            </el-form>
+            </bue-form>
 
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialog.visible = false">取 消</el-button>
@@ -91,12 +90,14 @@
 </template>
 
 <script type="text/ecmascript-6">
+    import BueForm from '@/components/BueForm/BueForm';
     import BueTable from '@/components/BueTable/BueTable';
 
     export default {
         name: 'bue-crud',
         components: {
-            BueTable
+            BueTable,
+            BueForm
         },
         props: {
             crudApi: { //增删改查api实例化方法
@@ -137,13 +138,13 @@
                 default: true
             },
             formLabelWidth: { //表单label宽度
-                type: Number,
-                default: null
+                type: String,
+                default: ''
             },
-            rules: {
-                type: Object,
-                default: null
-            },
+            // rules: {
+            //     type: Object,
+            //     default: null
+            // },
             formSet: {
                 type: Function,
                 default: null
@@ -172,7 +173,7 @@
                 dialog: {
                     isNew: false,
                     visible: false,
-                    closed: true
+                    closed: true //用于重新渲染form，清除验证条件
                 },
                 formModel: {} //表单内容
             };
@@ -216,7 +217,17 @@
                 });
             },
             async initData(conditions, order, {pageIndex, pageSize}) {
-                return new Promise((resolve) => {
+                this.loading = true;
+                let response = await this.crudApi.query({conditions, order, pageIndex, pageSize});
+                this.loading = false;
+                if (typeof this.afterQuery === 'function') {
+                    response = this.afterQuery(response); //用于需要修改传回数据时
+                    if (response === false) { //返回false则终止修改操作
+                        return;
+                    }
+                }
+                return response;
+                /*return new Promise((resolve) => {
                     this.loading = true;
                     this.crudApi.query({conditions, order, pageIndex, pageSize}).then((response) => {
                         this.loading = false;
@@ -229,7 +240,7 @@
                         resolve(response);
                     });
 
-                });
+                });*/
             },
             // pageSize 改变时会触发
             pageSizeChange(pageSize) {
@@ -436,10 +447,10 @@
             selectionChange(rows) {
                 this.selectRows = rows;
             },
-            ClosedHandle() {
-                this.$refs.bueCrudForm.resetFields();
-                this.dialog.closed = true;
-            }
+            // ClosedHandle() {
+            //     this.$refs.bueCrudForm.resetFields();
+            //     this.dialog.closed = true;
+            // }
         }
     };
 </script>

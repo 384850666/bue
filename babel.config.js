@@ -1,8 +1,8 @@
 module.exports = {
     presets: [
         '@vue/app'
-    ],
-    "plugins": [
+    ]
+    /*"plugins": [
         [
             "component",
             {
@@ -10,5 +10,5 @@ module.exports = {
                 "styleLibraryName": "theme-chalk"
             }
         ]
-    ]
+    ]*/
 }

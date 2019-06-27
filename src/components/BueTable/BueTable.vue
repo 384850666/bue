@@ -208,7 +208,7 @@
                         return this.dataFormat(row, data, this.bindings, dtype, format);
                     });
                 });
-            },
+            }
         }
     };
 </script>

@@ -49,7 +49,7 @@
         width: 100%;
         height: 65px;
         line-height: 65px;
-        background-color: #329da5;
+        background-color: #2d2d2d;
         padding: 0 25px;
         .left-container {
             height: 65px;

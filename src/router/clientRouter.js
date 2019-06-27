@@ -85,6 +85,14 @@ export default new Router({
                             component: () => import('../views/client/bue-form/bue-img-upload')
                         },
                         {
+                            path: 'bue-file-upload',
+                            name: 'bue-file-upload',
+                            meta: {
+                                title: 'BueFileUpload'
+                            },
+                            component: () => import('../views/client/bue-form/bue-file-upload')
+                        },
+                        {
                             path: 'bue-code',
                             name: 'bue-code',
                             meta: {
@@ -101,7 +109,15 @@ export default new Router({
                             component: () => import('../views/client/bue-form/bue-rich-editor')
                         }
                     ]
-                }
+                },
+                {
+                    path: 'bue-tree',
+                    name: 'bue-tree',
+                    meta: {
+                        title: 'BueTree'
+                    },
+                    component: () => import('../views/client/bue-tree/bue-tree')
+                },
             ]
         },
         {
