@@ -7,8 +7,10 @@ import axios from 'axios'
 import * as Cookies from 'js-cookie';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import VueLazyload from 'vue-lazyload'
 
 Vue.use(ElementUI);
+Vue.use(VueLazyload);
 
 /* 配置vue原型 */
 Vue.prototype.$axios = axios;

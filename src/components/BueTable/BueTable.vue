@@ -21,7 +21,7 @@
                             <div class="bue-preview" v-if="scope.row.pics.length">
                                 <span class="load">Image</span>
                                 <div class="img-box">
-                                    <img :src="scope.row.pics[0].url"
+                                    <img v-lazy="scope.row.pics[0].url"
                                          alt="" width="50" height="50">
                                 </div>
                                 <div class="preview-box" title="点击查看大图"
@@ -46,7 +46,7 @@
                                     <div class="bue-preview" v-if="scope.row.pics.length">
                                         <span class="load">Image</span>
                                         <div class="img-box">
-                                            <img :src="scope.row.pics[0].url"
+                                            <img v-lazy="scope.row.pics[0].url"
                                                  alt="" width="50" height="50">
                                         </div>
                                         <div class="preview-box" title="点击查看大图"

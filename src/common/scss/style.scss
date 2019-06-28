@@ -1,3 +1,17 @@
 @import "iconfont.scss";
 @import "reset.scss";
 @import "base.scss";
+
+img[lazy=loading] {
+  background: url(../../assets/img-loading.png) #f7f9f8 no-repeat center center;
+  background-size: contain;
+}
+
+img[lazy=error] {
+  background: url(../../assets/img-error.png) #f7f9f8 no-repeat center center;
+  background-size: contain;
+}
+
+img[lazy=loaded] {
+
+}
