@@ -1,6 +1,7 @@
 <template>
     <div class="demo-file-upload">
-
+        {{value}}
+        <el-transfer ref="transfer" v-model="value" :data="data"></el-transfer>
     </div>
 </template>
 
@@ -10,7 +11,21 @@
     export default {
         name: 'demo-file-upload',
         data() {
-            return {}
+            const generateData = _ => {
+                const data = [];
+                for (let i = 1; i <= 15; i++) {
+                    data.push({
+                        key: i,
+                        label: `备选项 ${ i }`,
+                        disabled: i % 4 === 0
+                    });
+                }
+                return data;
+            };
+            return {
+                data: generateData(),
+                value: [1, 4]
+            };
         },
         methods: {
             timedo(ms) {
@@ -37,6 +52,9 @@
                 console.log(tree);
                 console.log(log);
             });*/
+        },
+        mounted() {
+            console.log(this.$refs.transfer);
         }
     };
 </script>
